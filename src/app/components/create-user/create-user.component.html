@@ -1,0 +1,31 @@
+<form class="form" (ngSubmit)="onSubmit()">
+  <div class="header">
+    <h3>Create User</h3>
+    <fa-icon (click)="onClick()" [icon]="faTimes"></fa-icon>
+  </div>
+  <div class="form-control">
+    <label for="name">Name : </label>
+    <input required id="name" type="text" name="name" [(ngModel)]="name" />
+    <label for="email">Email : </label>
+    <input required id="email" type="email" name="email" [(ngModel)]="email" />
+    <label for="age">Age : </label>
+    <input
+      required
+      id="age"
+      min="2"
+      type="number"
+      name="age"
+      [(ngModel)]="age"
+    />
+    <label for="verified">
+      <input
+        type="checkbox"
+        id="verified"
+        name="verified"
+        [(ngModel)]="verified"
+      />
+      Verified
+    </label>
+    <input type="submit" value="Create" />
+  </div>
+</form>

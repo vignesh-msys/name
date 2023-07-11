@@ -1,0 +1,23 @@
+.card {
+  background-color: antiquewhite;
+  border-radius: 5px;
+  padding: 0.4rem;
+  padding-left: 1vw;
+  width: 28vw;
+  display: grid;
+  align-items: center;
+}
+.active{
+    background-color: rgb(198, 245, 228);
+}
+p {
+  padding: 0;
+  margin: 7px;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: bolder;
+}

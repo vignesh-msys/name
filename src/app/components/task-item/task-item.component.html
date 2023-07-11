@@ -1,0 +1,20 @@
+<div
+  [ngClass]="{ active: user.verified }"
+  class="card"
+  (dblclick)="onToggle(user)"
+>
+  <p class="flex">
+    {{ user.name }}
+    <fa-icon
+      (click)="onDelete(user)"
+      [ngStyle]="{ color: 'red', cursor: 'pointer' }"
+      [icon]="faTimes"
+    ></fa-icon>
+  </p>
+  <p>
+    Email : <b>{{ user.email }}</b>
+  </p>
+  <p>
+    Age : <b>{{ user.age }}</b>
+  </p>
+</div>

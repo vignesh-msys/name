@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "vicky",
+      "age": 17,
+      "verified": true,
+      "email": "vicky@mail.com"
+    }
+  ]
+}
