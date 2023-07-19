@@ -1,46 +1,90 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { User } from 'src/app/interface/user';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { TaskService } from 'src/app/services/task.service';
+import { CanComponentDeactivate } from 'src/app/services/candeactivate.service';
 
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css'],
 })
-export class CreateUserComponent {
+export class CreateUserComponent implements CanComponentDeactivate {
+  changesSaved = false;
+  constructor(
+    private taskService: TaskService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  @Output() closeModal: EventEmitter<boolean> = new EventEmitter();
-  @Output() handleSubmit: EventEmitter<User> = new EventEmitter();
+  skillList: string[] = [];
+  skill: string = '';
+  name: string = '';
+  email: string = '';
+  age: number = 2;
+  text: string = 'Create';
+  id: number;
 
-  @Input() total: number;
+  ngOnInit() {
+    this.route.params.subscribe((param: Params) => {
+      if (param['id']) {
+        this.text = 'Edit';
+        this.id = param['id'];
+        this.taskService.getuserById(+param['id']).subscribe((response) => {
+          this.skillList = response.skills;
+          this.name = response.name;
+          this.age = response.age;
+          this.email = response.email;
+        });
+      }
+    });
+  }
 
-  name: string;
-  email: string;
-  age: number = 17;
-  verified: boolean = false;
-  faTimes = faTimes;
-
-  onClick() {
-    this.closeModal.emit();
+  addSkill() {
+    if (this.skill === '') {
+      alert('Skill Field should be filled...');
+      return;
+    }
+    this.skillList.push(this.skill);
+    this.skill = '';
   }
 
   onSubmit() {
+    this.changesSaved = true;
     if (!this.name || !this.email) {
       alert('Please fill all fields...');
       return;
     }
-
-    const newUser = {
-      id: this.total + 1,
+    const user = {
       name: this.name,
       age: this.age,
-      verified: this.verified,
       email: this.email || '',
+      skills: this.skillList,
     };
-    this.handleSubmit.emit(newUser);
-    this.name = '';
-    this.age = 2;
-    this.verified = false;
-    this.email = '';
+    if (this.text === 'Create') {
+      this.taskService.addUsers(user).subscribe(
+        () => {
+          alert('user added');
+          this.router.navigate(['']);
+        },
+        () => alert('something went Wrong, please try again.')
+      );
+    } else {
+      this.taskService.updateUser(user, this.id).subscribe(
+        () => {
+          alert('user Updated');
+          this.router.navigate(['']);
+        },
+        () => alert('something went Wrong, please try again.')
+      );
+    }
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    if (this.name !== '' || this.email !== '') {
+      return confirm('Do you really want to leave the page..?');
+    } else {
+      return true;
+    }
   }
 }

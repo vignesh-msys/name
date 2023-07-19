@@ -1,0 +1,13 @@
+<div class="user-container">
+  <div class="fold-one">
+    <h3>User List</h3>
+    <app-user-item
+      *ngFor="let item of userData"
+      [user]="item"
+      (handleDelete)="deleteUser($event)"
+    ></app-user-item>
+  </div>
+  <div class="fold-two">
+    <router-outlet></router-outlet>
+  </div>
+</div>

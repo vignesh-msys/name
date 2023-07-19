@@ -1,13 +1,21 @@
 <form class="form" (ngSubmit)="onSubmit()">
-  <div class="header">
-    <h3>Create User</h3>
-    <fa-icon (click)="onClick()" [icon]="faTimes"></fa-icon>
-  </div>
+  <h3>{{text}} User</h3>
   <div class="form-control">
     <label for="name">Name : </label>
     <input required id="name" type="text" name="name" [(ngModel)]="name" />
     <label for="email">Email : </label>
     <input required id="email" type="email" name="email" [(ngModel)]="email" />
+    <br>
+    <label for="skill">
+      <input
+        required
+        id="skill"
+        type="skill"
+        name="skill"
+        [(ngModel)]="skill"
+      />
+      <button type="button" (click)="addSkill()">add skill</button>
+    </label>
     <label for="age">Age : </label>
     <input
       required
@@ -17,15 +25,7 @@
       name="age"
       [(ngModel)]="age"
     />
-    <label for="verified">
-      <input
-        type="checkbox"
-        id="verified"
-        name="verified"
-        [(ngModel)]="verified"
-      />
-      Verified
-    </label>
-    <input type="submit" value="Create" />
+    <p *ngIf="skillList.length">Added Skills : {{ skillList.join(", ") }}</p>
+    <input type="submit" value="{{text}}" />
   </div>
 </form>

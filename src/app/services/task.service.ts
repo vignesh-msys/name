@@ -13,6 +13,7 @@ const httpOpt = {
   providedIn: 'root',
 })
 export class TaskService {
+  data: User[];
   private apiUrl = 'http://localhost:3000/users';
 
   constructor(private api: HttpClient) {}
@@ -21,14 +22,21 @@ export class TaskService {
     return this.api.get<User[]>(this.apiUrl);
   }
 
+  getuserById(id: number): Observable<User> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.api.get<User>(url);
+  }
+
   deleteUser(user: User): Observable<User> {
     const url = `${this.apiUrl}/${user.id}`;
     return this.api.delete<User>(url);
   }
-  updateUserVerified(user: User): Observable<User> {
-    const url = `${this.apiUrl}/${user.id}`;
+
+  updateUser(user: User, id: number): Observable<User> {
+    const url = `${this.apiUrl}/${id}`;
     return this.api.put<User>(url, user, httpOpt);
   }
+
   addUsers(user: User): Observable<User> {
     return this.api.post<User>(this.apiUrl, user);
   }

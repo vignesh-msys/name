@@ -1,1 +1,13 @@
-<div class="header">Name Viewer</div>
+<div class="header">
+  <a [routerLink]="['']">Name Viewer</a>
+  <div>
+    <input
+      placeholder="Filter by Name"
+      [(ngModel)]="query"
+    />
+    <button class="search-btn" (click)="handleQuery()">
+        <fa-icon style="color: white;" [icon]="faSearch"></fa-icon>
+    </button>
+  </div>
+  <a class="btn" [routerLink]="['new']">Create User</a>
+</div>

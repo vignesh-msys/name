@@ -1,0 +1,16 @@
+<div *ngIf="data.name; else nouser" class="container">
+  <a [routerLink]="['edit']" routerLinkActive="router-link-active"
+    >Edit User</a
+  >
+  <h3>User Detail</h3>
+  <p><b>Name : </b> {{ data.name }}</p>
+  <p><b>Email : </b> {{ data.email }}</p>
+  <p><b>Age : </b> {{ data.age }}</p>
+  <p><b>Skills : </b></p>
+  <ul class="li-container">
+    <li class="skill" *ngFor="let skill of data.skills">{{ skill }}</li>
+  </ul>
+</div>
+<ng-template #nouser>
+  <h2>No user Found in this Id</h2>
+</ng-template>

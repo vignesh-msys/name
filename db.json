@@ -1,11 +1,49 @@
 {
   "users": [
     {
-      "id": 1,
       "name": "vicky",
       "age": 17,
-      "verified": true,
-      "email": "vicky@mail.com"
+      "email": "vicky@mail.com",
+      "skills": [
+        "Js",
+        "Python",
+        "Html"
+      ],
+      "id": 1
+    },
+    {
+      "name": "yuvi",
+      "age": 17,
+      "email": "yuvi@mail.com",
+      "skills": [
+        "Js",
+        "Python",
+        "Html"
+      ],
+      "id": 3
+    },
+    {
+      "name": "swathy Nagarajan",
+      "age": 17,
+      "email": "swathy@gmail.com",
+      "skills": [
+        "Js",
+        "Python",
+        "Html",
+        "React js"
+      ],
+      "id": 4
+    },
+    {
+      "name": "balaji",
+      "age": 22,
+      "email": "balaji@mail.com",
+      "skills": [
+        "js",
+        "html",
+        "react"
+      ],
+      "id": 5
     }
   ]
 }

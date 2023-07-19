@@ -1,0 +1,17 @@
+<div *ngIf="filteredData.length > 0; else noresult">
+  <h1>Search result for : {{ searchQuery }}</h1>
+  <a *ngFor="let user of filteredData" class="card">
+    <p class="flex">
+      {{ user.name }}
+    </p>
+    <p>
+      Email : <b>{{ user.email }}</b>
+    </p>
+    <p>
+      Age : <b>{{ user.age }}</b>
+    </p>
+  </a>
+</div>
+<ng-template #noresult>
+  <h1>No results found...</h1>
+</ng-template>

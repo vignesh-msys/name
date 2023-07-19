@@ -4,31 +4,36 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { TasksComponent } from './components/tasks/tasks.component';
-import { TaskItemComponent } from './components/task-item/task-item.component';
-import { ModalComponent } from './components/modal/modal.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
+import { AppRouter } from 'src/route/app-route.module';
+import { UsersComponent } from './components/users/users.component';
+import { UserItemComponent } from './components/user-item/user-item.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { NoUserComponent } from './components/no-user/no-user.component';
+import { SearchResultComponent } from './components/search-result/search-result.component';
+import { CanDeactivateGaurd } from './services/candeactivate.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    TasksComponent,
-    TaskItemComponent,
-    ModalComponent,
     CreateUserComponent,
+    UsersComponent,
+    UserItemComponent,
+    UserDetailsComponent,
+    NoUserComponent,
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRouter,
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [CanDeactivateGaurd],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,13 +1,13 @@
-<div
-  [ngClass]="{ active: user.verified }"
+<a
+  [routerLink]="[user.id]"
+  routerLinkActive="active"
   class="card"
-  (dblclick)="onToggle(user)"
 >
   <p class="flex">
     {{ user.name }}
     <fa-icon
-      (click)="onDelete(user)"
-      [ngStyle]="{ color: 'red', cursor: 'pointer' }"
+      (click)="onDelete(user, $event)"
+      [ngStyle]="{ color: 'skyblue', cursor: 'pointer' }"
       [icon]="faTimes"
     ></fa-icon>
   </p>
@@ -17,4 +17,4 @@
   <p>
     Age : <b>{{ user.age }}</b>
   </p>
-</div>
+</a>
