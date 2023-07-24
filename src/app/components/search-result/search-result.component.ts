@@ -19,7 +19,6 @@ export class SearchResultComponent {
   ngOnInit() {
     this.route.queryParams.subscribe((queryParams) => {
       this.searchQuery = queryParams['query'];
-      console.log(queryParams);
       this.taskService.getUserData().subscribe((data) => {
         this.filteredData = data.filter(
           (item) =>

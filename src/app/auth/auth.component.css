@@ -1,0 +1,43 @@
+.authForm {
+  padding: 20px;
+  margin-top: 7vh;
+  border-radius: 5px;
+  background: linear-gradient(45deg, rgb(115, 215, 255), rgb(144, 144, 251));
+  margin-bottom: 28px;
+}
+h2 {
+  text-align: center;
+  color: white;
+  margin-top: 0;
+}
+p {
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+label {
+  color: white;
+  font-weight: bold;
+}
+.authForm form button {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  font-weight: bold;
+  border: none;
+  width: 30%;
+  position: relative;
+  left: 35%;
+  color: rgb(144, 144, 251);
+}
+.authForm form {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  row-gap: 3vh;
+}
+.authForm form input {
+  padding: 10px;
+  width: 25vw;
+}
+

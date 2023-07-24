@@ -7,16 +7,13 @@ import { TaskService } from 'src/app/services/task.service';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
 })
-
 export class UsersComponent {
   userData: User[] = [];
-  constructor(
-    private taskService: TaskService,
-  ) {}
+  constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
     this.taskService.getUserData().subscribe((data) => {
-      this.userData = data;
+      this.userData = Object.values(data);
     });
   }
 

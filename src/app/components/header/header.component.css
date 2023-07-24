@@ -7,6 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 98vw;
 }
 .btn {
   cursor: pointer;
@@ -36,4 +37,10 @@
 .header a{
 color: white;
 text-decoration: none;
+}
+.logout{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 20px;
 }

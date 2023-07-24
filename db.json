@@ -7,20 +7,10 @@
       "skills": [
         "Js",
         "Python",
-        "Html"
+        "Html",
+        "react"
       ],
       "id": 1
-    },
-    {
-      "name": "yuvi",
-      "age": 17,
-      "email": "yuvi@mail.com",
-      "skills": [
-        "Js",
-        "Python",
-        "Html"
-      ],
-      "id": 3
     },
     {
       "name": "swathy Nagarajan",

@@ -1,13 +1,16 @@
 <div class="header">
-  <a [routerLink]="['']">Name Viewer</a>
-  <div>
-    <input
-      placeholder="Filter by Name"
-      [(ngModel)]="query"
-    />
-    <button class="search-btn" (click)="handleQuery()">
-        <fa-icon style="color: white;" [icon]="faSearch"></fa-icon>
-    </button>
+  <h3>Name Viewer</h3>
+  <a *ngIf="isAuthenticated" [routerLink]="['user']">User List</a>
+  <div *ngIf="isAuthenticated">
+    <form (ngSubmit)="handleQuery()">
+      <input placeholder="Filter by Name" name="query" [(ngModel)]="query" />
+      <button class="search-btn" type="submit">
+        <fa-icon style="color: white" [icon]="faSearch"></fa-icon>
+      </button>
+    </form>
   </div>
-  <a class="btn" [routerLink]="['new']">Create User</a>
+  <div *ngIf="isAuthenticated" class="logout">
+    <a class="btn" [routerLink]="['new']">Create User</a>
+    <a style="cursor: pointer;" (click)="handleLogout()">Logout</a>
+  </div>
 </div>

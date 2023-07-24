@@ -25,3 +25,11 @@ body,
 ::-webkit-scrollbar-thumb:hover {
   background: grey;
 }
+.alert{
+  margin-top: 10px;
+  padding: 10px;
+  background-color: rgb(246, 211, 211);
+  border: 1px solid rgb(227, 105, 105);
+  color: rgb(227, 105, 105);
+  border-radius: 10px;
+}

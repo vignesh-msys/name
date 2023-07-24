@@ -3,15 +3,15 @@ import {
   ActivatedRouteSnapshot,
   Router,
   RouterStateSnapshot,
+  UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { map, Observable, take } from 'rxjs';
+import { AuthServiceService } from 'src/app/auth/auth-service.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGaurd {
-  
   constructor(
     private authService: AuthServiceService,
     private router: Router
@@ -20,15 +20,19 @@ export class AuthGaurd {
   canActivate(
     Route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.authService.isAuthenticated().then((auth):boolean => {
-      if (auth) {
-        return true;
-      } else {
-        this.router.navigate(['']);
-        return false;
-      }
-    });
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    return this.authService.user.pipe(
+      take(1),
+      map((user) => {
+        console.log(user)
+        const isAuth = !!user;
+        if (isAuth) return true;
+        return this.router.createUrlTree(['/auth']);
+      })
+    );
   }
-
 }

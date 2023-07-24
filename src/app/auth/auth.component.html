@@ -1,0 +1,18 @@
+<div class="authForm" *ngIf="!isLoading; else loading">
+  <h2>{{ isLogin ? "Login" : "Register" }}</h2>
+  <form #form="ngForm" (ngSubmit)="handleSubmit(form)">
+    <label>Email</label>
+    <input type="email" ngModel name="email" required email />
+    <label>password</label>
+    <input type="password" name="password" ngModel required />
+    <button [disabled]="!form.valid" type="submit">Submit</button>
+  </form>
+  <p (click)="isLogin = !isLogin">
+    Click here to{{ isLogin ? " Create Account" : " Login" }}
+  </p>
+</div>
+<span class="alert" *ngIf="error">
+  {{ error }}
+</span>
+
+<ng-template #loading> LOADING PLEASE WAIT....</ng-template>
