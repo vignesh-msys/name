@@ -1,15 +1,8 @@
-<a
-  [routerLink]="[user.id]"
-  routerLinkActive="active"
-  class="card"
->
+<a [routerLink]="[user.id]" routerLinkActive="active" class="card">
   <p class="flex">
     {{ user.name }}
-    <fa-icon
-      (click)="onDelete(user, $event)"
-      [ngStyle]="{ color: 'skyblue', cursor: 'pointer' }"
-      [icon]="faTimes"
-    ></fa-icon>
+    <fa-icon (click)="onDelete(user, $event)" [ngStyle]="{ color: 'skyblue', cursor: 'pointer' }"
+      [icon]="faTimes"></fa-icon>
   </p>
   <p>
     Email : <b>{{ user.email }}</b>
